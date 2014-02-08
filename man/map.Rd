@@ -1,0 +1,71 @@
+\name{map}
+\alias{map}
+\title{Apply a function over each element of a vector}
+\arguments{
+  \item{x}{Any indexable data structure}
+
+  \item{fn}{A function applied to each x_i in x}
+
+  \item{acc}{An initial data structure to accumulate the
+  value of f(x_i)}
+}
+\value{
+  A sequence representing < f(x_i) > for all x_i in x
+}
+\description{
+  This function implements a map operation over arbitrary
+  indexable data structures. Both 1D and 2D data structures
+  are supported.
+}
+\note{
+  This function is implemented using recursion and will
+  throw an error if the length of \code{x} approaches
+  \code{getOption('expressions') / 8.0}. This limit is due
+  to R attempting to protect against infinite recursion.
+  See \code{options} for more details.
+}
+\section{Usage}{
+  map(x, fn, acc) \%::\% . : Function : . : .
+
+  map(x, fn, acc=c())
+}
+
+\section{Details}{
+  While many functions in R are vectorized, some functions
+  only work for scalar input. The map function transforms
+  any scalar-valued function into a vectorized function.
+  This is known as the map-equivalent form of the scalar
+  function.
+
+  The map operation is implemented for 2D data structures
+  as a column-based operation. If a row-based procedure is
+  desired instead, simply transpose the data structure.
+
+  Conceptually, the map operation is equivalent to the
+  apply family of functions. The reason for this
+  implementation is primarily for pedagogical purposes.
+}
+\examples{
+map(-10:10, quantize)
+
+# Output a list instead of a vector
+map(-10:10, quantize, acc=list())
+
+# Sum the columns of a matrix
+map(matrix(1:24, ncol=4), sum)
+
+# Sum the columns of a data.frame
+map(data.frame(a=1:6, b=7:12, c=13:18, d=19:24), sum)
+}
+\author{
+  Brian Lee Yung Rowe
+}
+\references{
+  Rowe, Brian Lee Yung. Modeling Data With Functional
+  Programming In R. Chapman & Hall/CRC Press. Forthcoming.
+}
+\seealso{
+  \code{\link{fold}} \code{\link{maprange}}
+  \code{\link{mapblock}}
+}
+

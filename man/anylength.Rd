@@ -1,0 +1,87 @@
+\name{anylength}
+\alias{anylength}
+\title{Get the generic length of an object}
+\arguments{
+  \item{data}{Any indexable data structure}
+}
+\value{
+  The conceptual 'length' of a data structure.
+}
+\description{
+  This function gets the generic length of an object.
+}
+\section{Usage}{
+  anylength(data)
+}
+
+\section{Details}{
+  This function consolidates size dimensions for one and
+  two dimensional data structures. The idea is that many
+  operations require knowing either how long a vector is or
+  how many rows are in a matrix. So rather than switching
+  between \code{length} and \code{nrow}, \code{anylength}
+  provides the appropriate polymorphism to return the
+  proper value.
+
+  When working with libraries, it is easy to forget the
+  return type of a function, particularly when there are a
+  lot of switches between vectors, matrices, and other data
+  structures. This function along with its
+  \code{\link{anynames}} counterpart provides a single
+  interface for accessing this information across objects
+
+  The core assumption is that in most cases length is
+  semantically synonymous with \code{nrow} such that the
+  number of columns in two-dimensional structures is less
+  consequential than the number of rows. This is
+  particularly true of time-based objects, such as zoo or
+  xts where the number of observations is equal to the
+  number of rows in the structure.
+
+  When working with functions that are polymorphic,
+  \code{lambda.r} function clauses with guard conditions on
+  the length of the input data structure can use
+  \code{anylength} instead of using \code{length} or
+  \code{nrow}, which preserves polymorphism and reduces the
+  number of function clauses necessary. For example,
+  instead of one clause to check \code{length} and another
+  to check \code{nrow}, \code{anylength} can test for both
+  situations in a single clause.
+
+  \preformatted{ slice(x, expression) \%::\% a : logical :
+  list
+
+  slice(x, expression) \%when\% \{ length(expression) ==
+  length(x) \}
+
+  slice(x, expression) \%::\% a : logical :
+
+  slice(x, expression) \%when\% \{ length(expression) ==
+  nrow(x) \}}
+
+  These two clauses can be replaced with
+
+  \preformatted{ slice(x, expression) \%::\% a : logical :
+  .
+
+  slice(x, expression) \%when\% \{ length(expression) ==
+  anylength(x) \}}
+
+  Another use of \code{anylength} is when working with
+  \code{sapply}. The output value is governed by the result
+  of the higher-order function, so it is difficult to know
+  a priori whether the result will be a vector or a matrix.
+  With \code{anylength} it doesn't matter since the same
+  function is used in either case.
+}
+\examples{
+# Get the rows of the matrix
+anylength(matrix(c(1,2,3,4,5,6), ncol=2))
+
+# Get the length of the vector
+anylength(c(1,2,3,4,5))
+}
+\author{
+  Brian Lee Yung Rowe
+}
+

@@ -1,0 +1,49 @@
+\name{foldblock}
+\alias{foldblock}
+\title{Successively apply a function to adjacent blocks of a sequence}
+\arguments{
+  \item{x}{Any indexable data structure}
+
+  \item{window}{The number of elements in each
+  sub-sequence}
+
+  \item{fn}{The function applied to the sub-sequence}
+
+  \item{acc}{The intermediate accumulated value}
+}
+\value{
+  The accumulated value
+}
+\description{
+  Apply a function to non-overlapping sub-sequences and the
+  accumulated value of the function application
+}
+\section{Usage}{
+  foldblock(x, window, fn, acc=0)
+}
+
+\section{Details}{
+  This function is the fold counterpart of mapblock. Like
+  mapblock the usefulness of this function is for the 2D
+  case, as it can simplify interacting with matrices. See
+  the example below for using foldblock as a summation
+  operator over matrices
+}
+\examples{
+# Sum 5 2 x 2 matrices
+ms <- matrix(sample(40,20, replace=TRUE), nrow=2)
+foldblock(ms,2, function(a,b) a + b)
+
+# 1D foldblock is equivalent to 2D fold
+x <- 1:12
+f <- function(a,b) mean(a) + b
+foldblock(x,3,f) == fold(matrix(x, nrow=3),f)
+}
+\author{
+  Brian Lee Yung Rowe
+}
+\seealso{
+  \code{\link{map}} \code{\link{fold}}
+  \code{\link{foldrange}}
+}
+
