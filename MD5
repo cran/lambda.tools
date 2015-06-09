@@ -1,8 +1,8 @@
-5161b4156e2c41f0dac364bf4cb87b13 *DESCRIPTION
+81b41368a422999abe8e282871c79bae *DESCRIPTION
 b11c409a46ba5e338425d1f0006268e7 *NAMESPACE
 729198cbbbbfb2530d2d12bbc104925f *R/any.R
-6624ffa6b4af8a504e59471627650259 *R/fold.R
-85fd24daa828beb0da5e8d0455e13f76 *R/lambda.tools-package.R
+fbcef4acecf124fc1f7304f5c283f06c *R/fold.R
+984bc9a22b151c17e21e50858b213786 *R/lambda.tools-package.R
 a86759b2f02623741bb138603b9aea28 *R/logic.R
 729c868eeec880c6f08473a78c797b39 *R/map.R
 d43c78d265832e7f229cf0337dba22af *R/ntry.R
@@ -32,7 +32,7 @@ a9795ca1551f48f72a85ad013785e53f *man/fold.Rd
 830590251c017960fd867183115bcf10 *man/is.empty.Rd
 55b087417e758bafd5c384dc17ecf253 *man/is.scalar.Rd
 06692cfa9153e8502b327a6cc30752f2 *man/item.Rd
-8ff888ac41f2b9bcbcf1179d4affb8e6 *man/lambda.tools-package.Rd
+7455de4a50ab116d20e6a806c63142e7 *man/lambda.tools-package.Rd
 836e09352c37a36e4dbe17278e9a7c78 *man/map.Rd
 ebba94a01e5b0526e73e459e39354cfb *man/mapblock.Rd
 7c4cc866e9a8d38f4277ea3f968eab59 *man/maprange.Rd
@@ -46,4 +46,4 @@ e3f9e7eaeebc5c60ddc2cf11da5b8ac3 *man/samplerange.Rd
 09abf2da622dd86bf9259745e30dfe60 *man/segment.Rd
 685ef5739dd47924c5337b586b7ad01d *man/slice.Rd
 8e186882e372fab0ff35d529d1f3767e *man/use_default.Rd
-53cbcc7ae1e85d14001c9923fc3823b0 *tests/run_tests.R
+7a3a53e9c92702fa087da69b510488a4 *tests/run_tests.R

@@ -1,8 +1,8 @@
 Package: lambda.tools
 Type: Package
 Title: Tools for Modeling Data with Functional Programming
-Version: 1.0.6
-Date: 2015-03-20
+Version: 1.0.7
+Date: 2015-06-09
 Depends: R (>= 3.0.0)
 Imports: lambda.r (>= 1.1.6)
 Suggests: testthat (>= 0.2)
@@ -16,7 +16,7 @@ Description: Provides tools that manipulate and transform data using methods
 License: LGPL-3
 Collate: 'any.R' 'lambda.tools-package.R' 'logic.R' 'sequence.R'
         'fold.R' 'map.R' 'sample.R' 'transform.R' 'ntry.R'
-Packaged: 2015-03-21 00:19:08 UTC; brian
+Packaged: 2015-06-09 15:06:59 UTC; brian
 NeedsCompilation: no
 Repository: CRAN
-Date/Publication: 2015-03-21 06:44:20
+Date/Publication: 2015-06-09 21:27:23
